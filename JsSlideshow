@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JsSlideshow</title>
+    <style>
+        div {
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 4px 2px gray;
+        }
+
+        .img {
+            width: 500px;
+            height: 300px;
+        }
+
+        .ul-class {
+            position: relative;
+            display: flex;
+            transition: .3s;
+            margin-left: -40px;
+            margin-top: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        button {
+            position: absolute;
+            top: 120px;
+            font-size: 3rem;
+            color: rgb(177, 160, 114);
+            border: none;
+            outline: none;
+            background-color: rgb(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+
+        button:hover {
+            background-color: rgba(248, 195, 80, 0.8);
+            color: rgb(112, 107, 92);
+        }
+
+        .button-left {
+            left: 518px;
+            width: 50px;
+            height: 70px;
+        }
+
+        .button-right {
+            left: 969px;
+            width: 50px;
+            height: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img-div">
+        <ul class="ul-class">
+            <li><img src="../img/1.jpg" alt="" class="img"></li>
+            <li><img src="../img/2.jpg" alt="" class="img"></li>
+            <li><img src="../img/3.jpg" alt="" class="img"></li>
+        </ul>
+    </div>
+    <button class="button-left"><</button>
+    <button class="button-right">></button>
+
+            <script>
+                let button_l = document.querySelector('.button-left')
+                let button_r = document.querySelector('.button-right')
+                let img = document.querySelector('.ul-class')
+                let position = 0
+                let index = 0
+                let time
+
+                function add() {
+                    if (index<=1) {
+                        position -= 500
+                        index ++ 
+                    }else{
+                        index = 0
+                        position = 0
+                    }
+                    img.style.left = position + "px"
+                }
+                function desc() {
+                   if (index >= 1) {
+                       position +=500 
+                       index --
+                   } else {
+                       position = -1000
+                       index = 2
+                   } 
+                   img.style.left = position + "px"
+                }
+                button_r.addEventListener('click', () => {
+                   add()
+                   clearInterval(time)
+                })
+                button_l.addEventListener('click', () => {
+                    desc()
+                    clearInterval(time)
+                })
+                function timer() {
+                    time = setInterval(() => {
+                        add()
+                    },2000)
+                }
+                timer()
+            </script>
+</body>
+
+</html>
