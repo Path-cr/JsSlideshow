@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JsSlideshow</title>
     <style>
-        div {
+        #img-div {
             width: 500px;
             height: 300px;
             overflow: hidden;
@@ -64,7 +64,7 @@
 </head>
 
 <body>
-    <div class="img-div">
+    <div id="img-div">
         <ul class="ul-class">
             <li><img src="../img/1.jpg" alt="" class="img"></li>
             <li><img src="../img/2.jpg" alt="" class="img"></li>
